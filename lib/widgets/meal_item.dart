@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:section7_meals_app_re/models/meal.dart';
 
 import '../models/meal.dart';
 
@@ -17,6 +16,44 @@ class MealItem extends StatelessWidget {
     @required this.complexity,
     @required this.affordability,
   });
+
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.Simple:
+        return 'Simple';
+        break;
+
+      case Complexity.Challenging:
+        return 'Chellenging';
+        break;
+
+      case Complexity.Hard:
+        return 'hard';
+        break;
+
+      default:
+        return 'Unkown';
+    }
+  }
+
+  String get AffordabilityText {
+    switch (affordability) {
+      case Affordability.Affordable:
+        return 'Affodable';
+        break;
+
+      case Affordability.Pricey:
+        return 'Pricey';
+        break;
+
+      case Affordability.Luxurious:
+        return 'Epensiv';
+        break;
+
+      default:
+        return 'Unkown';
+    }
+  }
 
   void selectMeal() {}
 
@@ -68,6 +105,7 @@ class MealItem extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Row(
                     children: <Widget>[
@@ -75,7 +113,25 @@ class MealItem extends StatelessWidget {
                       SizedBox(
                         width: 6,
                       ),
-                      Text('$duration min')
+                      Text('$duration min'),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.work),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(complexityText),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.attach_money),
+                      SizedBox(
+                        width: 6,
+                      ),
+                      Text(AffordabilityText),
                     ],
                   )
                 ],
